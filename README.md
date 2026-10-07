@@ -1,4 +1,4 @@
-#Lunar Lander in Desmos
+# Lunar Lander in Desmos
 
 A basic Lunar Lander game, created in Desmos Graphing Calculator.
 
