@@ -6,11 +6,11 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 [Play it here!](https://www.desmos.com/calculator/rfzwxrgvqn)
 
 ## Features
-* Real rocket physics
-* Multi-tiered landing scores 
-* Realistic gravity
-* Full control via on-screen buttons
-* Angular normalisation
+* Simulated Rocket Thrust
+* Multi-tiered Landing Scores 
+* Gravity-Based Flight Physics
+* Full Control Via On-Screen Buttons
+* Angular Normalisation
 
 ## How To Play
 
