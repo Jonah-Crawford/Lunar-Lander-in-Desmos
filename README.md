@@ -15,6 +15,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 ## How To Play
 
 ### Instructions
+
 * Press the ticker in the upper left-hand corner to start the game. Please play full screen with the equation panel fully closed!
 * Press "Burn" to engage rockets
 * Spam "Burn" to move faster, but use more fuel
@@ -24,6 +25,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 * Use the injector scale to control the amount of fuel each burn uses up
 
 ### Rules
+
 * Don't crash! If either of your lander legs touch the moon's surface too hard, the lander will explode!
 * Soft landings (Velocity <= 10) gain you 10 points
 * Hard landings (Velocity <= 20) gain you 5 points
@@ -59,6 +61,7 @@ A_{nd}\left(a,b\right)=\left\{a+b=2:1,0\right\}
 ![And](https://www.dropbox.com/scl/fi/bo1ps0ew00n6p1r8gr0i0/Screenshot-2026-10-10-164022.png?rlkey=ely1uvknlhpcnfd2z4qpvj3i9&st=52896d25&raw=1)
 
 ## Full Acknowledgements (Everything I didn't know already by heart)
+
 * FPS tracking (`L_{ogFPS}`) taken from [this graph](https://www.desmos.com/calculator/ptvzqgk5sb)
 * Use of [DesModder](https://chromewebstore.google.com/detail/desmodder-for-desmos/eclmfdfimjhkmjglgdldedokjaemjfjp) to help with organisation
 * Rotation function (`R_otate`) taken from Google AI Summary (Search Query "how to rotate points on a graph")
