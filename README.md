@@ -35,7 +35,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 
 The entire project is centred on the lunar lander object, rather than the graph origin. The lander position is measured using the variable pair (`P_{osX}`, `P_{osY}`), which the graph viewport centers on and zooms based on the graph constants `C_{ameraScaleX}` and `C_{ameraScaleY}`. The same follows for `Z_{oom}`, which has no effect on the graph itself but rather the positions of all non-anchored graphics. Buttons and labels are anchored to the screen using the `A_{nchored}` function, which passes the point and outputs the point with the offset of the lunar lander (That being the `P_{osX}` and `P_{osY}` pair as mentioned prior). The collision logic constantly checks if both legs of the lunar lander are below the terrain, and if so, pauses the game to check the lander's relative velocity. `C_{ollisionType}` is analogous to an enum taking the value of 0, 1, 2, or 3. Where 0 is no collision, 1 is crash landing, 2 is hard landing, and 3 is soft landing. Points are awarded depending on the type of crash.
 
-One of the main hurdles of creating games like this one in Desmos are race conditions, in the form of actions. Every action's order needs to be absolutely precise, otherwise one variable will update and mutate it's value before it can be used by another function. The other massive hurdle is that there is no code whatsoever. If you can't decompose a programming concept into pure logic, then you can't create a desmos game. For example; the analogous enum variable `C_{ollisionType}` is just a value, such as `x` in the equation `2x = 10`. But `C_{ollisionType}` undergoes detailed processes to maintain a discrete and computationally predictable value, in this case the action `C_{ollideCheck}`, which is shown below.
+One of the main hurdles of creating games like this one in Desmos are race conditions, in the form of actions. Every action's order needs to be absolutely precise, otherwise one variable will update and mutate its value before it can be used by another function. The other massive hurdle is that there is no code whatsoever. If you can't decompose a programming concept into pure logic, then you can't create a desmos game. For example; the analogous enum variable `C_{ollisionType}` is just a value, such as `x` in the equation `2x = 10`. But `C_{ollisionType}` undergoes detailed processes to maintain a discrete and computationally predictable value, in this case the action `C_{ollideCheck}`, which is shown below.
 
 ```
 C_{ollideCheck}=V_{elocity}\to\operatorname{mean}\left(V_{elList}\right),
@@ -58,10 +58,10 @@ A_{nd}\left(a,b\right)=\left\{a+b=2:1,0\right\}
 
 ![And](https://www.dropbox.com/scl/fi/bo1ps0ew00n6p1r8gr0i0/Screenshot-2026-10-10-164022.png?rlkey=ely1uvknlhpcnfd2z4qpvj3i9&st=52896d25&raw=1)
 
-## Full Acknowledgements (Everything I didn't know already from heart)
-* FPS tracking: https://www.desmos.com/calculator/ptvzqgk5sb
-* Use of [DesModder](https://chromewebstore.google.com/detail/desmodder-for-desmos/eclmfdfimjhkmjglgdldedokjaemjfjp) to help with orginisation.
+## Full Acknowledgements (Everything I didn't know already by heart)
+* FPS tracking (`L_{ogFPS}`) taken from [this graph](https://www.desmos.com/calculator/ptvzqgk5sb)
+* Use of [DesModder](https://chromewebstore.google.com/detail/desmodder-for-desmos/eclmfdfimjhkmjglgdldedokjaemjfjp) to help with organisation
 * Rotation function (`R_otate`) taken from Google AI Summary (Search Query "how to rotate points on a graph")
-* Full terrain zoom handling (`T_errainFunction`) taken from [a ChatGPT output](https://chatgpt.com/s/t_6aca58bf83f88191affe62164fdad915) (See the prompt [here](https://chatgpt.com/s/p_6aca591a9b288191a7bde671d4f5a69c))
+* Terrain zoom handling (`T_errainFunction`) taken from [a ChatGPT output](https://chatgpt.com/s/t_6aca58bf83f88191affe62164fdad915) (See the prompt [here](https://chatgpt.com/s/p_6aca591a9b288191a7bde671d4f5a69c))
 
 Made By Jonah Crawford (@The_Craw) for the "Wrong Tool" event during Stardance, hosted by Hack Club
