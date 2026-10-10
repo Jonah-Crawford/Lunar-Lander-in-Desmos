@@ -11,6 +11,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 * Gravity-Based Flight Physics
 * Full Control Via On-Screen Buttons
 * Angular Normalisation
+* Randomised Terrain
 
 ## How To Play
 
