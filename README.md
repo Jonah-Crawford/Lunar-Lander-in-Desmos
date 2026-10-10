@@ -70,6 +70,6 @@ A_{nd}\left(a,b\right)=\left\{a+b=2:1,0\right\}
 * Timelapsing to prove hours done via [Lapse](https://lapse.hackclub.com/), created by Hack Club. Timelapses showing this project being created are publicly accessible:
   1. [Part 1](https://lapse.hackclub.com/timelapse/Ri_FiF7CFX1u)
   2. [Part 2](https://lapse.hackclub.com/timelapse/Ic4zdVwMfNzv)
-  3. [Part 3]()
+  3. [Part 3](https://lapse.hackclub.com/timelapse/XkxWmST6VbeC)
 
 Made By Jonah Crawford (@The_Craw) for the "Wrong Tool" event during Stardance, hosted by Hack Club
