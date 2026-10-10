@@ -6,7 +6,7 @@ settings @{
   squareAxes: false,
 }
 
-ticker R_un, L_ogFPS({dt < 200: dt, 200} / 1000) @{ minStep: 50 }
+ticker R_un, L_ogFPS({dt < 200: dt, 200} / 1000) @{ minStep: 50, playing: true }
 
 "^\n \\\n  \\\nPlay the ticker to turn on the game\nPlease play fullscreen!\n\n\n\n\n\nInstructions:\n    Press \"Burn\" to engage rockets\n    Spam \"Burn\" to move faster, but use more fuel\n    Use the zoom buttons (+/-) to change your viewport size\n    The \"Reset Lander\" button can be used to recover your lander from the starting point after a landing\n    Press \"New Game\" to start over\n    Use the injector scale to control the amount of fuel each burn uses up\n\nRules:\n    Don't crash! If either of your lander legs touch the moon's surface too hard, the lander will explode!\n    Soft landings (Velocity <= 10) gain you 10 points\n    Hard landings (Velocity <= 20) gain you 5 points\n    Landings at Velocity > 20 or Angle > 25 (relative to the ground) will cause you to crash!\n    After every landing, you can press \"Reset Lander\" to respawn at the top, for another landing opportunity\n    See how many points you can gain before your fuel runs out!\n\n\n\n\n\n| 2026-10-07 - 2026-10-10 | jonahcrawford.com | github.com/Jonah-Crawford | CRAW SYSTEMS | Made By Jonah Crawford (@The_Craw) for the \"Wrong Tool\" event during Stardance, hosted by Hack Club | https://github.com/Jonah-Crawford/Lunar-Lander-in-Desmos"
 
@@ -20,6 +20,7 @@ folder "Actions" {
     D_Y -> 0,
     T_hrustList -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     V_elList -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    R_ocketStrengthList -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     R_ocketPowerY -> 0,
     R_ocketPowerX -> 0,
     D_ead -> 0,
@@ -51,12 +52,12 @@ folder "Actions" {
       F_psLog[2 ... F_psLog.length]
     } @{ color: "#000000" }
 
-  "Conversion error: R_{un}=T_{ick}\\to T_{ick}+1,L_{anderFuel}\\to\\max\\left(\\left(L_{anderFuel}\\cdot N_{ot}\\left(D_{ead}\\right)\\right)-\\left(R_{ocketStrength}\\cdot T_{hrust}\\right),0\\right),C_{ollideCheck},T_{hrustList}\\to\\left[T_{hrust},T_{hrustList}\\left[1\\right],T_{hrustList}\\left[2\\right],T_{hrustList}\\left[3\\right],T_{hrustList}\\left[4\\right],T_{hrustList}\\left[5\\right],T_{hrustList}\\left[6\\right],T_{hrustList}\\left[7\\right],T_{hrustList}\\left[8\\right],T_{hrustList}\\left[9\\right]\\right],V_{elList}\\to\\left[1000\\left(\\left|\\min\\left(D_{Y},0\\right)\\right|+0.1\\left|D_{X}\\right|\\right),V_{elList}\\left[1\\right],V_{elList}\\left[2\\right],V_{elList}\\left[3\\right],V_{elList}\\left[4\\right],V_{elList}\\left[5\\right],V_{elList}\\left[6\\right],V_{elList}\\left[7\\right],V_{elList}\\left[8\\right],V_{elList}\\left[9\\right],V_{elList}\\left[10\\right],V_{elList}\\left[11\\right],V_{elList}\\left[12\\right],V_{elList}\\left[13\\right],V_{elList}\\left[14\\right],V_{elList}\\left[15\\right],V_{elList}\\left[16\\right],V_{elList}\\left[17\\right],V_{elList}\\left[18\\right],V_{elList}\\left[19\\right]\\right],T_{hrust}\\to0,R_{ocketPowerY}\\to C_{lamp}\\left(N_{egligible}\\left(T_{hrustSmoothing}\\left(T_{ick},T_{hrustTick}\\right)\\cdot\\left(R_{ocketPowerY}+T_{hrust}\\right)\\right),M_{axRocketPower}\\right),R_{ocketPowerX}\\to\\max\\left(\\min\\left(R_{ocketPowerX}+R_{ocketStrength}\\cdot N_{egligible}\\left(T_{hrustSmoothing}\\left(T_{ick},T_{hrustTick}\\right)\\cdot R_{ocketPowerY}\\right)\\sin\\left(\\beta\\right),M_{axHorizontalVelocity}\\right),-M_{axHorizontalVelocity}\\right),D_{X}\\to R_{ocketStrength}\\cdot\\left|R_{ocketPowerX}\\right|\\sin\\left(-\\beta\\right),D_{Y}\\to R_{ocketStrength}\\cdot\\left|R_{ocketPowerY}\\right|\\cos\\left(\\beta\\right)-\\left(G_{ravitationalStrength}\\cdot P_{ositive}\\left(A_{ltitude}\\right)\\right),P_{osY}\\to P_{osY}+N_{ot}\\left(D_{ead}\\right)\\cdot D_{Y},P_{osX}\\to P_{osX}+N_{ot}\\left(D_{ead}\\right)\\cdot D_{X},\\alpha\\to M_{ux}\\left(\\gamma,\\alpha,R_{unning}\\right),D_{eathTicks}\\to D_{eathTicks}+D_{ead},P_{laytime}\\to P_{laytime}+1,R_{ealPlaytime}\\to R_{ealPlaytime}+\\frac{1}{F_{psLog}\\left[1\\right]}"
+  "Conversion error: R_{un}=T_{ick}\\to T_{ick}+1,L_{anderFuel}\\to\\max\\left(\\left(L_{anderFuel}\\cdot N_{ot}\\left(D_{ead}\\right)\\right)-\\left(R_{ocketStrength}\\cdot T_{hrust}\\right),0\\right),C_{ollideCheck},T_{hrustList}\\to\\left[T_{hrust},T_{hrustList}\\left[1\\right],T_{hrustList}\\left[2\\right],T_{hrustList}\\left[3\\right],T_{hrustList}\\left[4\\right],T_{hrustList}\\left[5\\right],T_{hrustList}\\left[6\\right],T_{hrustList}\\left[7\\right],T_{hrustList}\\left[8\\right],T_{hrustList}\\left[9\\right]\\right],V_{elList}\\to\\left[1000\\left(\\left|\\min\\left(D_{Y},0\\right)\\right|+0.1\\left|D_{X}\\right|\\right),V_{elList}\\left[1\\right],V_{elList}\\left[2\\right],V_{elList}\\left[3\\right],V_{elList}\\left[4\\right],V_{elList}\\left[5\\right],V_{elList}\\left[6\\right],V_{elList}\\left[7\\right],V_{elList}\\left[8\\right],V_{elList}\\left[9\\right],V_{elList}\\left[10\\right],V_{elList}\\left[11\\right],V_{elList}\\left[12\\right],V_{elList}\\left[13\\right],V_{elList}\\left[14\\right],V_{elList}\\left[15\\right],V_{elList}\\left[16\\right],V_{elList}\\left[17\\right],V_{elList}\\left[18\\right],V_{elList}\\left[19\\right]\\right],T_{hrust}\\to0,R_{ocketPowerY}\\to C_{lamp}\\left(N_{egligible}\\left(T_{hrustSmoothing}\\left(T_{ick},T_{hrustTick}\\right)\\cdot\\left(R_{ocketPowerY}+T_{hrust}\\right)\\right),M_{axRocketPower}\\right),R_{ocketPowerX}\\to\\max\\left(\\min\\left(R_{ocketPowerX}+S_{um}\\left(R_{ocketStrengthList}\\right)\\cdot N_{egligible}\\left(T_{hrustSmoothing}\\left(T_{ick},T_{hrustTick}\\right)\\cdot R_{ocketPowerY}\\right)\\sin\\left(\\beta\\right),M_{axHorizontalVelocity}\\right),-M_{axHorizontalVelocity}\\right),D_{X}\\to S_{um}\\left(R_{ocketStrengthList}\\right)\\cdot\\left|R_{ocketPowerX}\\right|\\sin\\left(-\\beta\\right),D_{Y}\\to S_{um}\\left(R_{ocketStrengthList}\\right)\\cdot\\left|R_{ocketPowerY}\\right|\\cos\\left(\\epsilon\\right)-\\left(G_{ravitationalStrength}\\cdot P_{ositive}\\left(A_{ltitude}\\right)\\right),P_{osY}\\to P_{osY}+N_{ot}\\left(D_{ead}\\right)\\cdot D_{Y},P_{osX}\\to P_{osX}+N_{ot}\\left(D_{ead}\\right)\\cdot D_{X},\\alpha\\to M_{ux}\\left(\\gamma,\\alpha,R_{unning}\\right),D_{eathTicks}\\to D_{eathTicks}+D_{ead},P_{laytime}\\to P_{laytime}+1,R_{ealPlaytime}\\to R_{ealPlaytime}+\\frac{1}{F_{psLog}\\left[1\\right]}"
 
-  "Conversion error: O_{nThrust}=T_{hrust}\\to N_{ot}\\left(O_{r}\\left(D_{ead},E_{qual}\\left(L_{anderFuel},0\\right)\\right)\\right),\\beta\\to\\frac{\\left(\\alpha+\\left(\\beta\\cdot B_{urnCount}\\right)\\right)}{B_{urnCount}+1},B_{urnCount}\\to B_{urnCount}+1,T_{hrustTick}\\to T_{ick}"
+  "Conversion error: O_{nThrust}=T_{hrust}\\to N_{ot}\\left(O_{r}\\left(D_{ead},E_{qual}\\left(L_{anderFuel},0\\right)\\right)\\right),R_{ocketStrengthList}\\to\\left[R_{ocketStrength},R_{ocketStrengthList}\\left[1\\right],R_{ocketStrengthList}\\left[2\\right],R_{ocketStrengthList}\\left[3\\right],R_{ocketStrengthList}\\left[4\\right],R_{ocketStrengthList}\\left[5\\right],R_{ocketStrengthList}\\left[6\\right],R_{ocketStrengthList}\\left[7\\right],R_{ocketStrengthList}\\left[8\\right],R_{ocketStrengthList}\\left[9\\right]\\right],\\beta\\to\\frac{\\left(\\alpha+\\left(\\beta\\cdot B_{urnCount}\\right)\\right)}{B_{urnCount}+1},\\epsilon\\to\\alpha,B_{urnCount}\\to B_{urnCount}+1,T_{hrustTick}\\to T_{ick}"
 
   "Conversion error: C_{ollideCheck}=V_{elocity}\\to\\operatorname{mean}\\left(V_{elList}\\right),C_{ollision}\\to P_{ositive}\\left(\\left(2-\\left(P_{ositive}\\left(L_{eftAltitude}\\right)+P_{ositive}\\left(R_{ightAltitude}\\right)\\right)\\right)\\right),S_{core}\\to S_{core}+R_{unning}\\left(5C_{heckHard}\\left(C_{ollisionType}\\right)+10C_{heckSoft}\\left(C_{ollisionType}\\right)\\right),C_{ollisionType}\\to N_{ot}\\left(D_{ead}\\right)\\left(C_{ollision}\\cdot G_{etLandingMode}\\left(V_{elocity},\\Delta\\right)\\right),D_{ead}\\to O_{r}\\left(C_{heckCrash}\\left(C_{ollisionType}\\right),D_{ead}\\right),R_{unning}\\to N_{ot}\\left(O_{r}\\left(D_{ead},C_{ollisionType}\\right)\\right)"
-} @{ collapsed: true }
+}
 
 folder "Functions" {
   "Conversion error: R_{otateLander}\\left(x,y,\\theta\\right)=\\left(\\left(P_{osX}+\\left(x-P_{osX}\\right)\\cos\\left(\\theta\\right)-\\left(y-P_{osY}\\right)\\sin\\left(\\theta\\right)\\right),\\left(P_{osY}+\\left(x-P_{osX}\\right)\\sin\\left(\\theta\\right)+\\left(y-P_{osY}\\right)\\cos\\left(\\theta\\right)\\right)\\right)"
@@ -98,6 +99,8 @@ folder "Functions" {
   T_hrustSmoothing(t, T) = 0.8 @{ color: "#6042a6" }
 
   N_anCheck(a) = {a = a: 0, 1} @{ color: "#2d70b3", hidden: true }
+
+  "Conversion error: S_{um}\\left(l\\right)=\\sum_{n=1}^{l.\\operatorname{length}}\\left(l\\left[n\\right]\\right)"
 } @{ collapsed: true }
 
 folder "Constants" {
@@ -148,13 +151,13 @@ folder "Constants" {
 } @{ collapsed: true }
 
 folder "Global Variables" {
-  T_ick = 0 @{
+  T_ick = 1970 @{
     color: "#000000",
     hidden: true,
     slider: @{ loopMode: "PLAY_INDEFINITELY" },
   }
 
-  D_eathTicks = 3803 @{
+  D_eathTicks = [3803, 3803, 3803, 3803, 3803, 3803, 3803, 3803, 3803, 3803] @{
     color: "#388c46",
     hidden: true,
     slider: @{ loopMode: "PLAY_INDEFINITELY" },
@@ -166,26 +169,31 @@ folder "Global Variables" {
     slider: @{ loopMode: "PLAY_INDEFINITELY" },
   }
 
-  R_ealPlaytime = 0 @{
+  R_ealPlaytime = 11.860999999999997 @{
     color: "#388c46",
     hidden: true,
     slider: @{ loopMode: "PLAY_INDEFINITELY" },
   }
 
-  Z_oom = 1 @{
+  Z_oom = 0.25 @{
     color: "#2d70b3",
     slider: @{ min: Z_oomMin, max: Z_oomMax, step: 0.25 },
   }
 
   D_ead = 0 @{ color: "#c74440", slider: @{ min: 0, max: 1, step: 1 } }
 
-  T_hrust = 1 @{ color: "#2d70b3", slider: @{ min: 0, max: 1, step: 1 } }
+  T_hrust = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] @{
+    color: "#2d70b3",
+    slider: @{ min: 0, max: 1, step: 1 },
+  }
 
   T_hrustList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @{ color: "#388c46" }
 
   V_elList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @{
     color: "#2d70b3",
   }
+
+  R_ocketStrengthList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @{ color: "#388c46" }
 
   R_ocketPowerY = 0 @{
     color: "#2d70b3",
@@ -195,7 +203,7 @@ folder "Global Variables" {
 
   R_ocketPowerX = 0 @{ color: "#2d70b3", hidden: true }
 
-  S_core = 0 @{ color: "#c74440" }
+  S_core = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @{ color: "#c74440" }
 
   V_elX = 1000 * round(D_X, 3) @{ color: "#000000" }
 
@@ -203,7 +211,7 @@ folder "Global Variables" {
 
   R_ocketUse = 0.5 @{ color: "#388c46", hidden: true }
 
-  B_urnCount = 0 @{ color: "#2d70b3", hidden: true, slider: @{ min: 0 } }
+  B_urnCount = 69 @{ color: "#2d70b3", hidden: true, slider: @{ min: 0 } }
 
   S_coreList = [] @{ color: "#c74440" }
 
@@ -211,13 +219,13 @@ folder "Global Variables" {
     color: "#c74440",
   }
 
-  P_laytime = 0 @{
+  P_laytime = 169 @{
     color: "#388c46",
     slider: @{ loopMode: "PLAY_INDEFINITELY" },
   }
 
   F_psLog =
-    [18.867924528301888, 21.73913043478261, 18.867924528301888, 19.607843137254903, 20, 20.408163265306122, 20, 20.408163265306122, 20, 17.24137931034483, 14.492753623188406, 16.129032258064516, 11.11111111111111, 13.88888888888889, 15.625, 16.666666666666668, 16.666666666666668, 14.285714285714286, 16.949152542372882, 15.625, 13.88888888888889, 16.666666666666668, 16.666666666666668, 16.666666666666668] @{
+    [12.987012987012987, 13.698630136986301, 12.987012987012987, 12.658227848101266, 14.492753623188406, 14.925373134328359, 13.88888888888889, 10.989010989010989, 10.75268817204301, 12.820512820512821, 13.698630136986301, 12.345679012345679, 11.904761904761905, 13.88888888888889, 14.084507042253522, 13.88888888888889, 14.925373134328359, 12.5, 14.705882352941176, 15.151515151515152, 15.151515151515152, 14.705882352941176, 15.384615384615385, 14.925373134328359, 14.705882352941176] @{
     color: "#c74440",
   }
 
@@ -227,6 +235,14 @@ folder "Global Variables" {
   }
 
   D_ebug = 0 @{ color: "#c74440", slider: @{ min: 0, max: 1, step: 1 } }
+
+  epsilon = 0.9817477042468103 @{
+    color: "#c74440",
+    hidden: true,
+    slider: @{ min: -(pi / 2), max: pi / 2 },
+  }
+
+  R_ocketStrengthNow = 0.5 @{ color: "#2d70b3" }
 } @{ collapsed: true }
 
 folder "Lander Variables" {
@@ -238,7 +254,11 @@ folder "Lander Variables" {
 
   beta = 0 @{ color: "#c74440", slider: @{ min: -pi, max: pi } }
 
-  L_anderFuel = 100 @{ color: "#6042a6", slider: @{ reversed: true, max: 100 } }
+  L_anderFuel =
+    [70.153, 70.153, 70.153, 70.153, 70.153, 70.153, 70.153, 70.153, 70.153, 70.153] @{
+    color: "#6042a6",
+    slider: @{ reversed: true, max: 100 },
+  }
 
   D_X = 0 @{ color: "#6042a6", hidden: true }
 
@@ -789,7 +809,7 @@ folder "GUI" {
 
   X(t) = P_osX + t * D_X @{ color: "#000000", hidden: true }
 
-  Y(t) = P_osX + t * D_Y - (1 / 2) * (10 * G_ravitationalStrength) ^ 2 @{ color: "#000000", hidden: true }
+  "Conversion error: Y\\left(t\\right)=P_{osY}+tD_{Y}-\\frac{1}{2}\\left(10G_{ravitationalStrength}\\right)^{2}"
 
   (X(t), Y(t)) @{
     color: L_ightGrey,
@@ -892,47 +912,11 @@ folder "GUI" {
     },
   }
 
-  A_nchor(-8.5, 4.7) @{
-    color: W_hite,
-    hidden: true,
-    points: @{ opacity: O_r(A_nd3((P_ositive(R_ealPlaytimeS)),N_ot(P_ositive(R_ealPlaytimeM)),N_ot(P_ositive(R_ealPlaytimeH))),A_nd3(N_ot(P_ositive(R_ealPlaytimeS)),N_ot(P_ositive(R_ealPlaytimeM)),N_ot(P_ositive(R_ealPlaytimeH))))},
-    label: @{
-      text: "Playtime: ${R_{ealPlaytimeS}}s",
-      size: 1,
-      orientation: "below_right",
-      angle: 0,
-      outline: false,
-      editableMode: "NONE",
-    },
-  }
+  "Conversion error: expression"
 
-  A_nchor(-8.5, 4.7) @{
-    color: W_hite,
-    hidden: true,
- points: @{ opacity: O_r(A_nd3((P_ositive(R_ealPlaytimeS)),(P_ositive(R_ealPlaytimeM)),N_ot(P_ositive(R_ealPlaytimeH))),A_nd3(N_ot(P_ositive(R_ealPlaytimeS)),(P_ositive(R_ealPlaytimeM)),N_ot(P_ositive(R_ealPlaytimeH))))},
-    label: @{
-      text: "Playtime: ${R_{ealPlaytimeM}}m ${R_{ealPlaytimeS}}s",
-      size: 1,
-      orientation: "below_right",
-      angle: 0,
-      outline: false,
-      editableMode: "NONE",
-    },
-  }
+  "Conversion error: expression"
 
-  A_nchor(-8.5, 4.7) @{
-    color: W_hite,
-    hidden: true,
-    points: @{ opacity: O_r4(A_nd3((P_ositive(R_ealPlaytimeS)),(P_ositive(R_ealPlaytimeM)),(P_ositive(R_ealPlaytimeH))),A_nd3((P_ositive(R_ealPlaytimeS)),N_ot(P_ositive(R_ealPlaytimeM)),(P_ositive(R_ealPlaytimeH))),A_nd3(N_ot(P_ositive(R_ealPlaytimeS)),(P_ositive(R_ealPlaytimeM)),(P_ositive(R_ealPlaytimeH))),A_nd3(N_ot(P_ositive(R_ealPlaytimeS)),N_ot(P_ositive(R_ealPlaytimeM)),(P_ositive(R_ealPlaytimeH))))},
-    label: @{
-      text: "Playtime: ${R_{ealPlaytimeH}}h ${R_{ealPlaytimeM}}m ${R_{ealPlaytimeS}}s",
-      size: 1,
-      orientation: "below_right",
-      angle: 0,
-      outline: false,
-      editableMode: "NONE",
-    },
-  }
+  "Conversion error: expression"
 } @{ collapsed: true }
 
 folder "Debugging" {
