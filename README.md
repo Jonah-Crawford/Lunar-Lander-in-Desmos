@@ -3,7 +3,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 
 ![Hero](https://www.dropbox.com/scl/fi/xylutqksd6btqdzh4brng/Screenshot-2026-10-10-161446.png?rlkey=a2uno7nakjxmzqfiza7wb03eh&st=yz67lhq1&raw=1)
 
-[Play it here!](https://www.desmos.com/calculator/40tz1gtl9x)
+[Play it here!](https://www.desmos.com/calculator/rfzwxrgvqn)
 
 ## Features
 * Real rocket physics
