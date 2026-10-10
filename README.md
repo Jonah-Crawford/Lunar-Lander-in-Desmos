@@ -3,7 +3,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 
 ![Hero](https://www.dropbox.com/scl/fi/xylutqksd6btqdzh4brng/Screenshot-2026-10-10-161446.png?rlkey=a2uno7nakjxmzqfiza7wb03eh&st=yz67lhq1&raw=1)
 
-[Play it here!](https://www.desmos.com/calculator/rfzwxrgvqn)
+[Play it here!](https://www.desmos.com/calculator/cubtrm1weq)
 
 ## Features
 * Simulated Rocket Thrust
@@ -71,5 +71,6 @@ A_{nd}\left(a,b\right)=\left\{a+b=2:1,0\right\}
   1. [Part 1](https://lapse.hackclub.com/timelapse/Ri_FiF7CFX1u)
   2. [Part 2](https://lapse.hackclub.com/timelapse/Ic4zdVwMfNzv)
   3. [Part 3](https://lapse.hackclub.com/timelapse/XkxWmST6VbeC)
+  4. [Part 4](https://lapse.hackclub.com/timelapse/PMIDVn7dz6Jl)
 
 Made By Jonah Crawford (@The_Craw) for the "Wrong Tool" event during Stardance, hosted by Hack Club
