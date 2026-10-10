@@ -66,5 +66,9 @@ A_{nd}\left(a,b\right)=\left\{a+b=2:1,0\right\}
 * Use of [DesModder](https://chromewebstore.google.com/detail/desmodder-for-desmos/eclmfdfimjhkmjglgdldedokjaemjfjp) to help with organisation
 * Rotation function (`R_{otate}`) taken from Google AI Summary (Search Query "how to rotate points on a graph")
 * Terrain zoom handling (`T_{errainFunction}`) taken from [a ChatGPT output](https://chatgpt.com/s/t_6aca58bf83f88191affe62164fdad915) (See the prompt [here](https://chatgpt.com/s/p_6aca591a9b288191a7bde671d4f5a69c))
+* Timelapsing to prove hours done via [Lapse](https://lapse.hackclub.com/), created by Hack Club. Timelapses showing this project being created are publicly accessible:
+  1. [Part 1](https://lapse.hackclub.com/timelapse/Ri_FiF7CFX1u)
+  2. [Part 2](https://lapse.hackclub.com/timelapse/Ic4zdVwMfNzv)
+  3. [Part 3]()
 
 Made By Jonah Crawford (@The_Craw) for the "Wrong Tool" event during Stardance, hosted by Hack Club
