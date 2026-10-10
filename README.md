@@ -12,6 +12,25 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 * Full control via on-screen buttons
 * Angular normalisation
 
+## How To Play
+
+### Instructions
+* Press the ticker in the upper left-hand corner to start the game. Please play full screen with the equation panel fully closed!
+* Press "Burn" to engage rockets
+* Spam "Burn" to move faster, but use more fuel
+* Use the zoom buttons (+/-) to change your viewport size
+* The "Reset Lander" button can be used to recover your lander from the starting point after a landing
+* Press "New Game" to start over
+* Use the injector scale to control the amount of fuel each burn uses up
+
+### Rules
+* Don't crash! If either of your lander legs touch the moon's surface too hard, the lander will explode!
+* Soft landings (Velocity <= 10) gain you 10 points
+* Hard landings (Velocity <= 20) gain you 5 points
+* Landings at Velocity > 10 or Angle > 25 (relative to the ground) will cause you to crash!
+* After every landing, you can press "Reset Lander" to respawn at the top, for another landing opportunity
+* See how many points you can gain before your fuel runs out!
+
 ## About
 
 The entire project is centred on the lunar lander object, rather than the graph origin. The lander position is measured using the variable pair (`P_{osX}`, `P_{osY}`), which the graph viewport centers on and zooms based on the graph constants `C_{ameraScaleX}` and `C_{ameraScaleY}`. The same follows for `Z_{oom}`, which has no effect on the graph itself but rather the positions of all non-anchored graphics. Buttons and labels are anchored to the screen using the `A_{nchored}` function, which passes the point and outputs the point with the offset of the lunar lander (That being the `P_{osX}` and `P_{osY}` pair as mentioned prior). The collision logic constantly checks if both legs of the lunar lander are below the terrain, and if so, pauses the game to check the lander's relative velocity. `C_{ollisionType}` is analogous to an enum taking the value of 0, 1, 2, or 3. Where 0 is no collision, 1 is crash landing, 2 is hard landing, and 3 is soft landing. Points are awarded depending on the type of crash.
