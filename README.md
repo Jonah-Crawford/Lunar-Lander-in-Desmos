@@ -27,7 +27,7 @@ A basic Lunar Lander game, created in [Desmos Graphing Calculator](https://www.d
 * Don't crash! If either of your lander legs touch the moon's surface too hard, the lander will explode!
 * Soft landings (Velocity <= 10) gain you 10 points
 * Hard landings (Velocity <= 20) gain you 5 points
-* Landings at Velocity > 20 or Angle > 25 (relative to the ground) will cause you to crash!
+* Landings at Velocity > 20 or Angle > 25° (relative to the ground) will cause you to crash!
 * After every landing, you can press "Reset Lander" to respawn at the top, for another landing opportunity
 * See how many points you can gain before your fuel runs out!
 
